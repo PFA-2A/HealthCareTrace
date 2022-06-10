@@ -4,6 +4,8 @@ use std::mem::size_of;
 use anchor_lang::solana_program::log::{sol_log_compute_units};
 
 declare_id!("4yMJcfUii9vWPt98wucu3hccSrypw5EJoBAzgZjG8Q5a");
+//declare_id!("4yMJcfUii9vWPt98wucu3hccSrypw5EJoBAzgZjG8Q5a");
+
 
 const USER_NAME_LENGTH: usize = 100;
 
