@@ -40,5 +40,4 @@ pub struct PositionAccount {
     pub stored_batchs: Vec<Pubkey>,
     pub num_stored_batchs: u64,
     pub creator: Pubkey,
-    pub store_count: u64
 }
