@@ -17,12 +17,13 @@ import logo from '/images/scrum2.png'
 import bg from '/images/Blockchain.jpg'
 import { fontSize, fontWeight, width } from '@mui/system';
 import styles from '../../components/connectwallet/connectwallet.module.css'
-import { useWallet } from '@solana/wallet-adapter-react'
-import { WalletMultiButton } from '@solana/wallet-adapter-react-ui'
+import getWalletMultiButton from '../../client/wallet/getWalletMultiButton';
 
 const theme = createTheme();
 
 const ConnectWallet = () => {
+
+  const WalletMultiButton = getWalletMultiButton();
   return (
     <ThemeProvider theme={theme}>
       <header className='navbarHeader'>
