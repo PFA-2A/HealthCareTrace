@@ -1,0 +1,17 @@
+.createButton:hover {
+    background-color: #ED6400 !important;
+    font-size: larger;
+    transition: 0.2s;
+}
+.createButton {
+    width: 100%;
+    padding-top: 1rem;
+    border-radius: 9px;
+    color: #fff;
+    font-size: large;
+    cursor: pointer;
+    background-color: #00204A;
+    margin-left: 20px;
+    height: 60px;
+    text-align: center;
+}

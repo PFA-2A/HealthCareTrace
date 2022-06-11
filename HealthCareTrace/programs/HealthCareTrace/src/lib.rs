@@ -3,8 +3,8 @@ use solana_program::entrypoint::ProgramResult;
 use std::mem::size_of;
 use anchor_lang::solana_program::log::{sol_log_compute_units};
 
-declare_id!("4yMJcfUii9vWPt98wucu3hccSrypw5EJoBAzgZjG8Q5a");
 //declare_id!("4yMJcfUii9vWPt98wucu3hccSrypw5EJoBAzgZjG8Q5a");
+declare_id!("DSb71pb4Tfs9F5bkzX69JQFrZoXnUeqBkufndfGk62JX"); // somaya
 
 
 const USER_NAME_LENGTH: usize = 100;
@@ -42,6 +42,7 @@ pub struct CreateUser<'info> {
     // the one who paid the transaction fees/
     pub authority: Signer<'info>,
     //pub system_program: Program<'info, System>,
+    /// CHECK:
     pub system_program: UncheckedAccount<'info>,
     pub clock: Sysvar<'info, Clock>
 }

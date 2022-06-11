@@ -1,0 +1,12 @@
+.walletbutton:hover {
+    background-color: #ED6400 !important;
+    font-size: 18px;
+    transition: 0.2s;
+}
+.walletbutton {
+    width: 100%;
+    color: "white";
+    background-color: #00204A;
+    margin-left: 20px;
+    height: 60px;
+}
