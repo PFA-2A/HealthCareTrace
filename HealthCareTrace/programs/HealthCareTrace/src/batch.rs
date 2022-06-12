@@ -12,6 +12,7 @@ use crate::storedbatch::StoredBatchAccount;
 
 #[derive(Accounts)]
 pub struct CreateBatch<'info> {
+    
     #[account(mut)]
     pub current_pos: Account<'info, PositionAccount>,
 
