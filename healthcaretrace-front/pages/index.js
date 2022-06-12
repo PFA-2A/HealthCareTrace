@@ -1,8 +1,8 @@
 
 import Head from "next/head";
 import Navbar from "../components/navbar/Navbar";
-import Content from "../components/projects/Content";
-import LeftNavBar from "../components/projects/LeftNavBar";
+import Projects from "../components/home/products";
+import LeftNavBar from "../components/home/LeftNavBar";
 export default function Home({ results }) {
   return (
     <div>
@@ -13,7 +13,7 @@ export default function Home({ results }) {
       </Head>
       <Navbar />
       <LeftNavBar />
-      <Content />
+      <Projects />
     </div>
   );
 }

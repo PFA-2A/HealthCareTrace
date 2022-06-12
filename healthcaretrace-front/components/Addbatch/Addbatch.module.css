@@ -1,0 +1,25 @@
+.centeredcard {
+    width: 60%;
+    position: absolute;
+    top: 10%;
+    left: 20%;
+    height:55em;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.title {
+    font-size: 30px;
+    font-family: cursive;
+    font-weight: 600;
+    text-align: center;
+}
+
+.flexcontainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+}
+
+

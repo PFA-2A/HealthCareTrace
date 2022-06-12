@@ -1,8 +1,8 @@
 import React from 'react';
-import styles from "/components/projects/projects.module.css";
+import styles from "../home/product.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-    faListCheck, faEdit, faTrash, faBolt, faBug, faAdd
+    faListCheck, faArrowRightArrowLeft, faSearch
   } from "@fortawesome/free-solid-svg-icons";
 
 
@@ -23,12 +23,12 @@ function Backlogitemcard(props) {
             </div>
             <div> 
                 <FontAwesomeIcon
-							    icon={faEdit}
+							    icon={faSearch}
 							    style={{ width: "25px", height: "35px", cursor: "pointer" ,
                                     color: "#00204A", padding: "10px", paddingRight: "25px" }}
 			    />
                 <FontAwesomeIcon
-							    icon={faTrash}
+							    icon={faArrowRightArrowLeft}
 							    style={{ width: "25px", height: "35px", cursor: "pointer" ,
                                     color: "#ED6400", padding: "10px", paddingRight: "25px" }}
 			    />
