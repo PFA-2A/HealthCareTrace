@@ -19,6 +19,11 @@ import { fontSize, fontWeight, width } from '@mui/system';
 import styles from '../components/createuser/Createuser.module.css'
 import { useState } from 'react'
 
+const theme = createTheme();
+const stylingform = {
+    margin: "20px"
+  }  
+  
 const login = () => {
   return (
     <ThemeProvider theme={theme}>
