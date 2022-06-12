@@ -17,8 +17,6 @@ import logo from '/images/scrum2.png'
 import bg from '/images/Blockchain.jpg'
 import { fontSize, fontWeight, width } from '@mui/system';
 import styles from '../../components/createuser/Createuser.module.css'
-import { useWallet } from '@solana/wallet-adapter-react'
-import { WalletMultiButton } from '@solana/wallet-adapter-react-ui'
 import { useState } from 'react'
 
 const theme = createTheme();

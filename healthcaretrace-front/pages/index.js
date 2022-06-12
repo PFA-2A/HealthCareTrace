@@ -1,11 +1,11 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { useWallet } from '@solana/wallet-adapter-react'
+import getWallet from '../client/wallet/getWallet.js'
 import ConnectWallet from '../components/connectwallet/connectwallet.js'
 import UseWebsite from '../components/UseWebsite.js'
 
 export default function LogToWebsite() {
-  const { connected } = useWallet()
+  const { connected } = getWallet()
   return (
     <div>
       <Head>
