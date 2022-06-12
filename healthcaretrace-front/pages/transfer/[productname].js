@@ -1,10 +1,10 @@
 import React from 'react'
-import Navbar from '../components/navbar/Navbar'
+import Navbar from '../../components/navbar/Navbar'
 import Image from 'next/image'
-import image from '../images/Blockchain.jpg'
-import TransferController from '../components/Transfer/TransferController.js'
+import image from '../../images/Blockchain.jpg'
+import TransferController from '../../components/Transfer/TransferComponent.js'
 
-const transfer = () => {
+const transferproduct = () => {
   return (
     <div>
         <Navbar/>
@@ -18,4 +18,4 @@ const transfer = () => {
   )
 }
 
-export default transfer
+export default transferproduct

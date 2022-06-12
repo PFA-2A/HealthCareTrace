@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import React from 'react'
 import styles from './Transfer.module.css'
 import Card from '@mui/material/Card'
@@ -6,8 +7,10 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Select from 'react-dropdown-select';
 
-const TransferController = ( {}) => {
-  const options = [
+const TransferComponent = () => {
+    const router = useRouter()
+    const { path } = router.query.productname 
+    const options = [
     {
         value: "add11",
         label: "some addresse 1"
@@ -24,12 +27,12 @@ const TransferController = ( {}) => {
                     <Typography>
                         <h1 className={styles.title}> Transfer Operation </h1>
                     </Typography>
-                    <h3 style={{ textAlign: "center"}}> You are about transferring the item ////naaame to another location </h3>
+                    <h3 style={{ textAlign: "center"}}> You are about transferring the item {path} to another location </h3>
                     <div className={styles.flexcontainer}>
                         <h4> Pick a Location  </h4>
                         <Select
+                            keepOpen
                             options={ options }
-                            onChange={(values) => this.onChange(values)}
                         />
                         <Button 
                             className={styles.btn}
@@ -43,4 +46,4 @@ const TransferController = ( {}) => {
   )
 }
 
-export default TransferController
+export default TransferComponent
