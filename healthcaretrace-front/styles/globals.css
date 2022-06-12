@@ -20,12 +20,40 @@ a {
   position: sticky;
   top: 0;
   z-index: 10;
+  padding-right: 1.5rem;
 }
 .nav {
   display: flex;
   padding-left: 16px;
   justify-content: space-between;
   align-items: center;
+}
+.nav__menu-list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 35px;
+}
+.nav__link {
+  color: #F3F4F6;
+  font-weight: bold;
+  font-size: 18px; 
+  position: relative;
+  display: flex;
+  column-gap: 15px;
+}
+.nav__link::before {
+  content: '';
+  position: absolute;
+  width: 0%;
+  bottom: -15px;
+  left: 0;
+  height: 5px;
+  background-color: white;
+  transition: all 0.2s;
+}
+.nav__link:hover::before {
+  width: 100%;
 }
 .logotext {
   color: white;
@@ -37,4 +65,29 @@ a {
   flex-direction: row;
   align-items: center;
   column-gap: 12px;
+}
+.rdl-actions button {
+  background: #00204A !important;
+  border-radius: 50px;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+.rdl-control {
+  margin-top: 10px;
+}
+.rdl-filter {
+  height: 40px;
+}
+.rdl-control-container {
+  height: 200px;
+  font-size: 20px;
+}
+.rdl-actions {
+  height: 190px;
+}
+.react-dual-listbox *{
+  font-size: 17px;
+  font-family: cursive;
+  font-weight: 600;
 }
