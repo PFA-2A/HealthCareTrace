@@ -18,11 +18,23 @@ import bg from '/images/Blockchain.jpg'
 import { fontSize, fontWeight, width } from '@mui/system';
 import styles from '../../components/createuser/Createuser.module.css'
 import { useState } from 'react'
+import Select from 'react-dropdown-select';
+import getWallet from '../../client/wallet/getWallet.js';
 
 const theme = createTheme();
 const stylingform = {
   margin: "20px"
 }  
+const options = [
+  {
+      value: "add11",
+      label: "some addresse 1"
+  },
+  {
+      value: "add2",
+      label: "some addresse 2"
+  }
+]  
 
 const CreateUser = ( { createuser } ) => {
   return (
@@ -105,6 +117,9 @@ const CreateUser = ( { createuser } ) => {
               label="Enter your code"
               id="code"
               autoComplete="code"
+            />
+            <Select
+                options={ options }
             />
             <FormControlLabel
               style= {stylingform}

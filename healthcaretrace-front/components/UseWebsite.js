@@ -1,6 +1,5 @@
 import React from 'react'
 import CreateUser from './createuser/CreateUser'
-import Home from './Home'
 import { useEffect, useState } from 'react'
 import getUseWebsite from '../client/createuser/UseWebsite';
 
@@ -13,7 +12,7 @@ const UseWebsite = () => {
     <>
       { isAccount ? (
         <div>
-          <Home/>
+          
         </div>
       ) : (
           <CreateUser createuser = { signup } wallet = { wallet.publicKey.toBase58() }/>
