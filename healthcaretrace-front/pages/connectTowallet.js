@@ -11,7 +11,6 @@ export default function LogToWebsite() {
   const wallet = useWallet();
   if (wallet.connected) {
     setCookies("connected",  wallet.connected);
-    setCookies("walletKey",  wallet.publicKey);
     router.push('/signup');
   }
   return (

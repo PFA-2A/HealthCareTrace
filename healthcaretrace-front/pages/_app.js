@@ -3,14 +3,15 @@ import dynamic from 'next/dynamic'
 import '@solana/wallet-adapter-react-ui/styles.css'
 
 function MyApp({ Component, pageProps }) {
-  const WalletConnectionProvider = dynamic(
-    () => import ('../context/WalletConnectionProvider'), 
-    { ssr:false},
+  const WalletConnectProvider = dynamic(
+    () => import('../context/WalletConnectionProvider'),
+    { ssr: false },
   )
+
   return (
-    <WalletConnectionProvider>
+    <WalletConnectProvider>
       <Component {...pageProps} />
-    </WalletConnectionProvider>
+    </WalletConnectProvider>
   )
 }
 

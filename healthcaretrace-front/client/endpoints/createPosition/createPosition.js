@@ -29,7 +29,7 @@ const CreatePosition = async (name, description, role = "", wallet) => {
         "Production", {
             accounts: {
                 position: positionAccount.publicKey,
-                authority: getCookie('walletKey'),
+                authority: wallet.publicKey,
                 ...defaultAccounts
             }
         }
