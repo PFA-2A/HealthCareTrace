@@ -213,9 +213,7 @@
           {
             "name": "items",
             "type": {
-              "vec": {
-                "defined": "BatchAccount"
-              }
+              "vec": "publicKey"
             }
           }
         ]

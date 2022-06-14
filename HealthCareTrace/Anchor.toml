@@ -1,13 +1,13 @@
 [features]
 seeds = false
-[programs.localnet]
+[programs.devnet]
 health_care_trace = "DSb71pb4Tfs9F5bkzX69JQFrZoXnUeqBkufndfGk62JX"
 
 [registry]
 url = "https://anchor.projectserum.com"
 
 [provider]
-cluster = "localnet"
+cluster = "devnet"
 #wallet = "/home/somaya/.config/solana/id.json"
 wallet = "/home/ghmaimon/.config/solana/id.json"
 

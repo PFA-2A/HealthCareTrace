@@ -49,13 +49,6 @@ const signup = () => {
   const wallet = useWallet();
   const router = useRouter();
 
-  alert (wallet.publicKey);
-
-  if (!wallet.publicKey) {
-    removeCookies("connected");
-    router.push("/connectToWallet")
-
-}
   const submitCreateUser = async () => {
     await CreatePosition(formValues.name, formValues.code, "", wallet);
   }

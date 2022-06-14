@@ -5,14 +5,14 @@ import { StrictMode } from 'react';
 import getProgramInstance from "../utils/utils"
 import { TOKEN_PROGRAM_ID } from '@solana/spl-token'
 import { SOLANA_HOST } from '../utils/const'
-
+import { getCookie } from 'cookies-next';
 
 const { SystemProgram } = anchor.web3;
 
 const defaultAccounts = {
     tokeProgram : TOKEN_PROGRAM_ID,
     clock : anchor.web3.SYSVAR_CLOCK_PUBKEY,
-    SystemProgram : SystemProgram.programId,
+    systemProgram : SystemProgram.programId,
   }
 
 
@@ -29,7 +29,7 @@ const CreatePosition = async (name, description, role = "", wallet) => {
         "Production", {
             accounts: {
                 position: positionAccount.publicKey,
-                authority: wallet.publicKey,
+                authority: getCookie('walletKey'),
                 ...defaultAccounts
             }
         }
