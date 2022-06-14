@@ -23,16 +23,20 @@ const createUser = (name, secret, wallet, positionPK)  => {
 
   const userAccount = anchor.web3.Keypair.generate();
 
+  const payer = anchor.web3.Keypair.generate();
+
     await program.rpc.createUser(
         name,
         secret,{
             accounts: {
                 user: userAccount.publicKey,
-                authority: wallet.publicKey,
+                authority: payer.publicKey,
                 position: positionPK,
                 ...defaultAccounts
             }
         }
     )
+
+    
   
 }

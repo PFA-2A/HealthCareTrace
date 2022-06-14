@@ -14,7 +14,7 @@ export default function(connection, wallet) {
     const idl = HEALTHCARETRACE_IDL
     const programid = HEALTHCARETRACE_PROGRAM_ID
 
-    const program = new (anchor).Program(idl, programid, provider)
+    const program = new (anchor).Program(idl, programid)
 
     return program 
 } 
