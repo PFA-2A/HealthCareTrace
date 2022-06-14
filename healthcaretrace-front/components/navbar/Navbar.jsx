@@ -10,7 +10,6 @@ const MENU_LIST = [
     }
 ]
 
-
 const Navbar = () => {
   return (
     <header className='navbarHeader'>

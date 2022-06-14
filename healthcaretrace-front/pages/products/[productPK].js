@@ -9,7 +9,6 @@ const SpecificPage = () => {
 
     const router = useRouter()
     const path = router.query.navitem
-
     return (<div>
         <Navbar />
         <Image
