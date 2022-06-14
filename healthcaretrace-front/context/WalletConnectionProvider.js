@@ -12,7 +12,7 @@ const WalletConnectionProvider = ({children}) => {
     const wallets = useMemo(_wallets, [])
     return (
         <ConnectionProvider endpoint={endpoint}>
-            <WalletProvider wallets={wallets}>
+            <WalletProvider wallets={wallets} autoConnect>
                 <WalletModalProvider>
                     {children}
                 </WalletModalProvider>
