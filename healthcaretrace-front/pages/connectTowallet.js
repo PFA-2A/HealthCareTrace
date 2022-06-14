@@ -8,9 +8,8 @@ import {useRouter} from 'next/router'
 
 export default function LogToWebsite() {
   const router = useRouter();
-  const wallet = useWallet()
-  alert(wallet.publicKey)
-  if (wallet.connected ) {
+  const wallet = useWallet();
+  if (wallet.connected) {
     setCookies("connected",  wallet.connected);
     router.push('/signup');
   }

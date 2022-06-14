@@ -9,7 +9,7 @@ import getWallet from '../client/wallet/getWallet.js'
 
 function addbatch() {
   const router = useRouter();
-  const { connected } = getWallet();
+  const { connected } = getWallet()
   /*if (connected ) {
     cookieCutter.set('wallet', connected);
     router.push('/signup');

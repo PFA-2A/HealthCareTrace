@@ -53,5 +53,5 @@ pub struct BatchAccount {
 
 #[account]
 pub struct ComponentsAccount {
-    pub items: Vec<BatchAccount>,
+    pub items: Vec<Pubkey>,
 }

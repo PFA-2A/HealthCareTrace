@@ -23,9 +23,10 @@ import {useRouter} from 'next/router'
 import { Select, MenuItem } from '@mui/material';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
-import CreatePosition from '../client/createPosition/createPosition';
+//import CreatePosition from '../client/createPosition/createPosition';
 import { removeCookies } from 'cookies-next'
-import { useWallet } from '@solana/wallet-adapter-react'
+import { useConnection, useWallet } from '@solana/wallet-adapter-react';
+import { WalletNotConnectedError } from '@solana/wallet-adapter-base';
 
 
 const theme = createTheme();
@@ -47,17 +48,13 @@ const stylingform = {
   
 const signup = () => {
   const wallet = useWallet();
-  const router = useRouter();
+  const { connection } = useConnection();
+  const { publicKey, sendTransaction } = useWallet();
 
-  alert (wallet.publicKey);
-
-  if (!wallet.publicKey) {
-    removeCookies("connected");
-    router.push("/connectToWallet")
-
-}
   const submitCreateUser = async () => {
-    await CreatePosition(formValues.name, formValues.code, "", wallet);
+    if (!publicKey) throw new WalletNotConnectedError();
+
+    //await CreatePosition(formValues.name, formValues.code, "", wallet);
   }
 
   const positionOptions = [{key: 1, value: "option 1"},
