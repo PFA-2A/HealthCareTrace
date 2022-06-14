@@ -1,13 +1,13 @@
 import React from 'react'
-import Navbar from '../components/navbar/Navbar'
-import Image from "next/image"
-import image from "../images/bg30.jpeg"
-import AddbatchContainer from '../components/Addbatch/AddbatchComponent'
+import Navbar from '../../components/navbar/Navbar'
+import Image from 'next/image'
+import image from '../../images/Blockchain.jpg'
+import TransferController from '../../components/Transfer/TransferComponent.js'
 import cookieCutter from 'cookie-cutter';
 import {useRouter} from 'next/router'
 import getWallet from '../client/wallet/getWallet.js'
 
-function addbatch() {
+const transferproduct = () => {
   const router = useRouter();
   const { connected } = getWallet()
   if (connected ) {
@@ -27,9 +27,9 @@ function addbatch() {
                 quality="100"
                 layout="fill"
         />
-        <AddbatchContainer/>
+        <TransferController/>
     </div>
   )
 }
 
-export default addbatch
+export default transferproduct
