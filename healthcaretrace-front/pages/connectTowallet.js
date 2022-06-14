@@ -2,15 +2,16 @@ import Head from 'next/head'
 import Image from 'next/image'
 import getWallet from '../client/wallet/getWallet.js'
 import ConnectWallet from '../components/connectwallet/connectwallet.js'
-import UseWebsite from '../components/UseWebsite.js'
 import { setCookies } from "cookies-next";
+import { useWallet } from '@solana/wallet-adapter-react';
 import {useRouter} from 'next/router'
 
 export default function LogToWebsite() {
   const router = useRouter();
-  const { connected } = getWallet()
-  if (connected ) {
-    setCookies("connected",  connected);
+  const wallet = useWallet()
+  alert(wallet.publicKey)
+  if (wallet.connected ) {
+    setCookies("connected",  wallet.connected);
     router.push('/signup');
   }
   return (

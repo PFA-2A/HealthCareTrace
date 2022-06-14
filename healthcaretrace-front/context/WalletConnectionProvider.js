@@ -8,8 +8,8 @@ import getWalletConnectionProvider from '../client/context/WalletConnectionProvi
 const WalletConnectionProvider = ({children}) => {
 
     const {_endpoint, _wallets, ConnectionProvider, WalletProvider, WalletModalProvider} = getWalletConnectionProvider();
-    const endpoint = useMemo(() => clusterApiUrl('devnet'), [])
-    const wallets = useMemo(() => [new PhantomWalletAdapter], [])
+    const endpoint = useMemo(_endpoint, [])
+    const wallets = useMemo(_wallets, [])
     return (
         <ConnectionProvider endpoint={endpoint}>
             <WalletProvider wallets={wallets}>

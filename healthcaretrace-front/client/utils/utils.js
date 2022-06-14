@@ -1,9 +1,9 @@
 import * as anchor from '@project-serum/anchor'
 import { WalletNotConnectedError } from '@solana/wallet-adapter-base'
 import { HEALTHCARETRACE_IDL, HEALTHCARETRACE_PROGRAM_ID} from './const'
+import { useRouter } from 'next/router'
 
 export default function(connection, wallet) {
-    if (!wallet.publicKey) throw new WalletNotConnectedError()
 
     const provider = new anchor.AnchorProvider(
         connection, 

@@ -9,16 +9,6 @@ import getWallet from '../client/wallet/getWallet.js'
 
 function addbatch() {
   const router = useRouter();
-  const { connected } = getWallet()
-  if (connected ) {
-    cookieCutter.set('wallet', connected);
-    router.push('/signup');
-  } else {
-    document.cookie = 'wallet=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-    localStorage.removeItem("wallet");
-    sessionStorage.removeItem("wallet");
-    router.push("/connectTowallet"); 
-  }
   return (
     <div>
         <Navbar/>

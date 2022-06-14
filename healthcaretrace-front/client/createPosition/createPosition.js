@@ -3,14 +3,40 @@ StrictMode
 import * as anchor from '@project-serum/anchor';
 import { StrictMode } from 'react';
 import getProgramInstance from "../utils/utils"
-import getWallet from '../wallet/getWallet';
+import { TOKEN_PROGRAM_ID } from '@solana/spl-token'
+import { SOLANA_HOST } from '../utils/const'
 
 
-const CreatePosition = (name, description, role, authorityPubkey) => {
+const { SystemProgram } = anchor.web3;
+
+const defaultAccounts = {
+    tokeProgram : TOKEN_PROGRAM_ID,
+    clock : anchor.web3.SYSVAR_CLOCK_PUBKEY,
+    SystemProgram : SystemProgram.programId,
+  }
+
+
+const CreatePosition = async (name, description, role = "", wallet) => {
 
     const connection = new anchor.web3.Connection(SOLANA_HOST, 'confirmed');
-    const wallet = getWallet();
     const program = getProgramInstance(connection, wallet);
+
+    const positionAccount = anchor.web3.Keypair.generate();
+
+    await program.rpc.createPosition(
+        name,
+        description,
+        "Production", {
+            accounts: {
+                position: positionAccount.publicKey,
+                authority: wallet.publicKey,
+                ...defaultAccounts
+            }
+        }
+    )
+
+    const account = await program.account.positionAccount.fetch(positionAccount.publicKey);
+    alert(account);
 }
 
 export default CreatePosition;

@@ -6,7 +6,7 @@ import { checkCookies, setCookies } from 'cookies-next';
 export async function middleware(req) {
 
   //const userKey = getCookie("userKey")
-  const userKey = "dummy";  
+  const userKey = req.cookies["userKey"];  
   var connected = req.cookies["connected"]
 
   const { pathname } = req.nextUrl;

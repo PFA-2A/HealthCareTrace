@@ -7,6 +7,6 @@ import { clusterApiUrl } from '@solana/web3.js'
 export default () => {
 
     const _endpoint = () => clusterApiUrl('devnet')
-    const _wallets = () => [new PhantomWalletAdapter]
+    const _wallets = () => [new PhantomWalletAdapter()]
     return {_endpoint, _wallets, ConnectionProvider, WalletProvider, WalletModalProvider};
 }

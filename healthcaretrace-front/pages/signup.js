@@ -20,13 +20,16 @@ import styles from '../components/createuser/Createuser.module.css'
 import { useState } from 'react'
 import cookieCutter from 'cookie-cutter';
 import {useRouter} from 'next/router'
-import getWallet from '../client/wallet/getWallet.js'
 import { Select, MenuItem } from '@mui/material';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
+import CreatePosition from '../client/createPosition/createPosition';
+import { removeCookies } from 'cookies-next'
+import { useWallet } from '@solana/wallet-adapter-react'
 
 
 const theme = createTheme();
+
 const stylingform = {
     margin: "20px"
   }  
@@ -42,18 +45,41 @@ const stylingform = {
     }
   ]  
   
-const login = () => {
-    const router = useRouter();
-    const { connected } = getWallet()
-    if (connected ) {
-      cookieCutter.set('wallet', connected);
-      //router.push('/signup');
-    } else {
-      document.cookie = 'wallet=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-      localStorage.removeItem("wallet");
-      sessionStorage.removeItem("wallet");
-      //router.push("/connectTowallet"); 
-    }  
+const signup = () => {
+  const wallet = useWallet();
+  const router = useRouter();
+
+  alert (wallet.publicKey);
+
+  if (!wallet.publicKey) {
+    removeCookies("connected");
+    router.push("/connectToWallet")
+
+}
+  const submitCreateUser = async () => {
+    await CreatePosition(formValues.name, formValues.code, "", wallet);
+  }
+
+  const positionOptions = [{key: 1, value: "option 1"},
+                            {key: 2, value: "option 2"},
+                            {key: 3, value: "option 3"}]
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormValues({
+      ...formValues,
+      [name]: value,
+    });
+  };
+  const defaultFormValues = {
+    name: "",
+    code:  "",
+    position: "",
+  }
+
+  const [formValues, setFormValues] = useState(defaultFormValues);
+  
+    
   return (
     <ThemeProvider theme={theme}>
     <header className='navbarHeader'>
@@ -122,6 +148,8 @@ const login = () => {
               id="name"
               label="Enter your name"
               name="name"
+              onChange={handleInputChange}
+              value={formValues.name}
               autoComplete="name"
               autoFocus
             />
@@ -133,6 +161,8 @@ const login = () => {
               name="code"
               label="Enter your code"
               id="code"
+              onChange={handleInputChange}
+              value={formValues.code}
               autoComplete="code"
             />
             <FormControl
@@ -144,12 +174,15 @@ const login = () => {
             
             labelId="demo-simple-select-label"
             id="demo-simple-select"
+            name="position"
+            onChange={handleInputChange}
+            value={formValues.position}
             placeholder='Select your location'
-            label="some shit"
+            label="Position"
              >
-                <MenuItem value={1}>option 1</MenuItem>
-                <MenuItem value={2}>option 2</MenuItem>
-                <MenuItem value={3}>option 3</MenuItem>
+               {positionOptions.map((pos => {
+                 return (<MenuItem value={pos.key}>{pos.value}</MenuItem>)
+               }))}
               </Select>
 
 
@@ -160,7 +193,7 @@ const login = () => {
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             /> 
-            <div className={styles.createButton}> Create Account </div>
+            <div onClick={submitCreateUser} className={styles.createButton}> Create Account </div>
           </Box>
         </Box>
       </Grid>
@@ -169,4 +202,4 @@ const login = () => {
   )
 }
 
-export default login
+export default signup
