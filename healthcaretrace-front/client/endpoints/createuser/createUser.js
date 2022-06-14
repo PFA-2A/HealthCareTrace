@@ -1,8 +1,8 @@
 import { useWallet } from '@solana/wallet-adapter-react'
-import { SOLANA_HOST } from '../utils/const'
+import { SOLANA_HOST } from '../../utils/const'
 import { TOKEN_PROGRAM_ID } from '@solana/spl-token'
-import useAccount from '../hooks/useAccount'
-import getProgramInstance from "../utils/utils"
+import useAccount from '../../hooks/useAccount'
+import getProgramInstance from "../../utils/utils"
 
 const anchor = require('@project-serum/anchor')
 const utf8 = anchor.utils.bytes.utf8
@@ -14,9 +14,8 @@ const defaultAccounts = {
   SystemProgram : SystemProgram.programId,
 }
 
-export default createUser;
 
-const createUser = (name, secret, wallet, positionPK)  => {
+const createUser = async (name, secret, wallet, positionPK)  => {
   const connection = new anchor.web3.Connection(SOLANA_HOST)
 
   const program = getProgramInstance(connection, wallet)
@@ -37,6 +36,6 @@ const createUser = (name, secret, wallet, positionPK)  => {
         }
     )
 
-    
-  
+
 }
+export default createUser;

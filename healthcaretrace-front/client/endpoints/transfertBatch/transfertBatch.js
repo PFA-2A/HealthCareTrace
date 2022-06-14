@@ -14,9 +14,9 @@ const defaultAccounts = {
   SystemProgram : SystemProgram.programId,
 }
 
-export default createUser;
+export default transferBatch;
 
-const createUser = (PkFrom, PkTo, batchPk)  => {
+const transferBatch = (PkFrom, PkTo, batchPk)  => {
   const connection = new anchor.web3.Connection(SOLANA_HOST)
 
   const program = getProgramInstance(connection, wallet)

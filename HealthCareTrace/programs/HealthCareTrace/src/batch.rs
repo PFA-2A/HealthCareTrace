@@ -39,6 +39,13 @@ pub struct CreateBatch<'info> {
         space = size_of::<StoredBatchAccount>() + 8
     )]
     pub stored_batch: Account<'info, StoredBatchAccount>,
+
+    #[account(
+        init,
+        payer = authority,
+        space = size_of::<StoredBatchAccount>() + 8
+    )]
+    pub list_components: Account<'info, ComponentsAccount>,
 }
 
 #[account]

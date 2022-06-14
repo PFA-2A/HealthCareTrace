@@ -16,6 +16,11 @@
           "isSigner": true
         },
         {
+          "name": "position",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
           "name": "systemProgram",
           "isMut": false,
           "isSigner": false
@@ -69,12 +74,6 @@
         {
           "name": "description",
           "type": "string"
-        },
-        {
-          "name": "role",
-          "type": {
-            "defined": "PositionRole"
-          }
         }
       ]
     },
@@ -115,6 +114,11 @@
           "name": "storedBatch",
           "isMut": true,
           "isSigner": true
+        },
+        {
+          "name": "listComponents",
+          "isMut": true,
+          "isSigner": true
         }
       ],
       "args": [
@@ -125,6 +129,12 @@
         {
           "name": "description",
           "type": "string"
+        },
+        {
+          "name": "listComponents",
+          "type": {
+            "vec": "publicKey"
+          }
         }
       ]
     },
@@ -233,12 +243,6 @@
             "type": "string"
           },
           {
-            "name": "role",
-            "type": {
-              "defined": "PositionRole"
-            }
-          },
-          {
             "name": "storedBatchs",
             "type": {
               "vec": "publicKey"
@@ -307,22 +311,6 @@
           {
             "name": "userWalletAddress",
             "type": "publicKey"
-          }
-        ]
-      }
-    }
-  ],
-  "types": [
-    {
-      "name": "PositionRole",
-      "type": {
-        "kind": "enum",
-        "variants": [
-          {
-            "name": "Agriculture"
-          },
-          {
-            "name": "Production"
           }
         ]
       }

@@ -26,7 +26,6 @@ use crate::batch::{
 use crate::position::{
     __client_accounts_create_position,
     CreatePosition,
-    PositionRole,
     PositionAccount
 };
 
@@ -38,6 +37,8 @@ use crate::storedbatch::{
 
 #[program]
 mod health_care_trace {
+
+    use crate::batch::ComponentsAccount;
 
     use super::*;
 
@@ -59,13 +60,11 @@ mod health_care_trace {
         ctx: Context<CreatePosition>,
         name: String,
         description: String,
-        role: PositionRole
     ) -> ProgramResult { 
         let position: &mut Account<PositionAccount> = &mut ctx.accounts.position;
         position.creator = ctx.accounts.authority.key();
         position.name = name;
         position.description = description;
-        position.role = role;
         position.num_stored_batchs = 0;
         msg!("user created");
         sol_log_compute_units();
@@ -75,7 +74,8 @@ mod health_care_trace {
     pub fn create_batch(
         ctx: Context<CreateBatch>,
         name: String,
-        description: String
+        description: String,
+        list_components: Vec<Pubkey>
     ) -> ProgramResult { 
         let batch: &mut Account<BatchAccount>  = &mut ctx.accounts.batch;
         batch.name = name;
@@ -97,6 +97,9 @@ mod health_care_trace {
         position.stored_batchs.push(stored_batch.key());
 
         batch.position_history.push(stored_batch.key());
+        
+        let list: &mut Account<ComponentsAccount> = &mut ctx.accounts.component_list;
+        list.items = list_components;
     
         msg!("batch created");
         sol_log_compute_units();

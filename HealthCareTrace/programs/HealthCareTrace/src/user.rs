@@ -1,6 +1,8 @@
 use std::mem::size_of;
 use anchor_lang::prelude::*;
 
+use crate::position::PositionAccount;
+
 const USER_NAME_LENGTH: usize = 100;
 
 #[derive(Accounts)]
@@ -12,9 +14,13 @@ pub struct CreateUser<'info> {
         space = size_of::<UserAccount>() + USER_NAME_LENGTH + 8
     )]
     pub user: Account<'info, UserAccount>,
+
     #[account(mut)]
-    // the one who paid the transaction fees/
     pub authority: Signer<'info>,
+
+    #[account(mut)]
+    pub position: Account<'info, PositionAccount>,
+
     pub system_program: Program<'info, System>,
     //pub system_program: UncheckedAccount<'info>,
     pub clock: Sysvar<'info, Clock>
