@@ -7,4 +7,4 @@ export const HEALTHCARETRACE_PROGRAM_ID = new PublicKey(
     "DSb71pb4Tfs9F5bkzX69JQFrZoXnUeqBkufndfGk62JX"
 )
 
-export const HEALTHCARETRACE_IDL = health_care_trace
+export const HEALTHCARETRACE_IDL = health_care_trace;

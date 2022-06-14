@@ -1,0 +1,336 @@
+{
+  "version": "0.1.0",
+  "name": "health_care_trace",
+  "instructions": [
+    {
+      "name": "createUser",
+      "accounts": [
+        {
+          "name": "user",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "authority",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "clock",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "secret",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "createPosition",
+      "accounts": [
+        {
+          "name": "position",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "authority",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "clock",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "name": "role",
+          "type": {
+            "defined": "PositionRole"
+          }
+        }
+      ]
+    },
+    {
+      "name": "createBatch",
+      "accounts": [
+        {
+          "name": "currentPos",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "componentList",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "batch",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "authority",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "clock",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "storedBatch",
+          "isMut": true,
+          "isSigner": true
+        }
+      ],
+      "args": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "transfertBatch",
+      "accounts": [
+        {
+          "name": "oldPosition",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "newPosition",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "batch",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "storedBatch",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "authority",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "clock",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    }
+  ],
+  "accounts": [
+    {
+      "name": "BatchAccount",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "type": "string"
+          },
+          {
+            "name": "currentPos",
+            "type": "publicKey"
+          },
+          {
+            "name": "positionHistory",
+            "type": {
+              "vec": "publicKey"
+            }
+          },
+          {
+            "name": "componentList",
+            "type": "publicKey"
+          },
+          {
+            "name": "creator",
+            "type": "publicKey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ComponentsAccount",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "items",
+            "type": {
+              "vec": {
+                "defined": "BatchAccount"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "PositionAccount",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "type": "string"
+          },
+          {
+            "name": "role",
+            "type": {
+              "defined": "PositionRole"
+            }
+          },
+          {
+            "name": "storedBatchs",
+            "type": {
+              "vec": "publicKey"
+            }
+          },
+          {
+            "name": "numStoredBatchs",
+            "type": "u64"
+          },
+          {
+            "name": "creator",
+            "type": "publicKey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "StoredBatchAccount",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "storePos",
+            "type": "publicKey"
+          },
+          {
+            "name": "batch",
+            "type": "publicKey"
+          },
+          {
+            "name": "timestamp",
+            "type": "i64"
+          },
+          {
+            "name": "creator",
+            "type": "publicKey"
+          },
+          {
+            "name": "currentlyStored",
+            "type": "bool"
+          },
+          {
+            "name": "index",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "UserAccount",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "userName",
+            "type": "string"
+          },
+          {
+            "name": "secret",
+            "type": "string"
+          },
+          {
+            "name": "position",
+            "type": "publicKey"
+          },
+          {
+            "name": "userWalletAddress",
+            "type": "publicKey"
+          }
+        ]
+      }
+    }
+  ],
+  "types": [
+    {
+      "name": "PositionRole",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Agriculture"
+          },
+          {
+            "name": "Production"
+          }
+        ]
+      }
+    }
+  ],
+  "metadata": {
+    "address": "4yMJcfUii9vWPt98wucu3hccSrypw5EJoBAzgZjG8Q5a"
+  }
+}
