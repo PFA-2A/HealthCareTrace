@@ -169,7 +169,7 @@ const signup = () => {
               fullWidth
               style={stylingform}
             >
-            <InputLabel id="demo-multiple-name-label">Name</InputLabel>
+            <InputLabel id="demo-multiple-name-label">Choose your location</InputLabel>
             <Select
             
             labelId="demo-simple-select-label"

@@ -3,8 +3,9 @@ import DualListBox from 'react-dual-listbox';
 import 'react-dual-listbox/lib/react-dual-listbox.css';
 
 const options = [
-    { value: 'one', label: 'Option One' },
-    { value: 'two', label: 'Option Two' },
+    { value: 'one', label: 'matière 1' },
+    { value: 'two', label: 'matière 2' },
+    { value: 'two', label: 'produit 1' },
 ];
 
 class Widget extends React.Component {
