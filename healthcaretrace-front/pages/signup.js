@@ -28,6 +28,7 @@ import { removeCookies } from 'cookies-next'
 import { useConnection, useWallet } from '@solana/wallet-adapter-react';
 import { WalletNotConnectedError } from '@solana/wallet-adapter-base';
 import createUser from '../client/endpoints/createuser/createUser';
+import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 
 
 const theme = createTheme();
@@ -53,8 +54,7 @@ const signup = () => {
   const { publicKey, sendTransaction } = useWallet();
 
   const submitCreateUser = async () => {
-    //if (!publicKey) throw new WalletNotConnectedError();
-
+    if (!publicKey) throw new WalletNotConnectedError();
     await CreatePosition(formValues.name, formValues.code, "", wallet);
   }
 

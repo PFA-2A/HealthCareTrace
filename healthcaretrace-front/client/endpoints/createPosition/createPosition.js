@@ -28,14 +28,18 @@ const CreatePosition = async (name, description, role = "", wallet) => {
 
     /*await connection.confirmTransaction(airdropSignature);
 
-    await program.rpc.createPosition(
+    alert(wallet.publicKey)
+
+    /*await program.rpc.createPosition(
         name,
         description, {
             accounts: {
                 position: wallet.publicKey,
                 authority: payer.publicKey,
                 ...defaultAccounts
-            }}
+            },
+            signers : [ wallet.publicKey]
+        }
     )
 
     const account = await program.account.positionAccount.fetch(positionAccount.publicKey);
