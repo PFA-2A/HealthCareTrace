@@ -17,7 +17,7 @@ const defaultAccounts = {
 const useAccount = () => {
   const wallet = useWallet()
   const connection = new anchor.web3.Connection(SOLANA_HOST)
-  //const program = getProgramInstance(connection, wallet)
+  const program = getProgramInstance(connection, wallet)
   const signup = async (name, secret) => {
     let [user_pda] = await anchor.web3.PublicKey.findProgramAddress(
       [utf8.encode('user'), wallet.publicKey.toBuffer()],
